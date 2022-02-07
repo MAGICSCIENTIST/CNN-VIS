@@ -1,0 +1,30 @@
+<p>overview works!</p>
+<div class="overview" id="overview-svg" #overview>        
+    <div class="cnn">
+        <!-- layergroup -->
+        <div nz-row *ngFor="let layer of cnn; let i = index" class="layergroup"> 
+            <canvas #background class="background-line" *ngIf="i>0" [attr.from]=i-1 [attr.to]=i [width]=width [height]=getLineHeight(layer) [attr.layertype]=layer[0].type>
+
+            </canvas>
+            <div nz-col nzSpan="24">
+                <h3 nz-typography>{{layer[0].layerName}}</h3>
+            </div>
+            <div nz-col nzSpan="24">
+                <div nz-row nzJustify="space-between">
+                    <!-- node -->
+                    <div nz-col *ngFor="let node of layer; let j = index" class="node" #node [attr.layer]="i" [attr.layerName]=node.layerName [attr.node]="j"> 
+                        <nz-card [nzTitle]="j | nodeTitle:node">
+                            <app-color-panel [data]=node [layerColorScales]=layerColorScales [height]=nodeSize [width]=nodeSize [isScale]=isScale></app-color-panel>                    
+                        </nz-card>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+  
+
+    <!-- <div class="cnn">
+        <svg id="cnn-svg"></svg>
+    </div> -->
+</div>

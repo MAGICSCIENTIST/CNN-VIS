@@ -1,0 +1,232 @@
+.layergroup{
+    // margin-bottom: 32px;    
+}
+.background-line{    
+    // &[layertype="pool"],&[layertype="relu"]{
+    //     height: 80px;
+    // }
+    // background-color: black;
+    // width: 100%;
+    // height: 200px;
+}
+
+
+
+// .node{
+//   background-color: #777777;
+// }
+
+// .overview {
+//     padding: 0;
+//     min-height: 100%;
+//     width: 100%;
+//     display: flex;
+//     position: relative;
+//     flex-direction: row;
+//     justify-content: space-between;
+//     align-items: flex-start;
+//   }
+
+//   .control-container {
+//     padding: 5px 20px;
+//     display: flex;
+//     align-items: center;
+//     justify-content: space-between;
+//     width: 100%;
+//   }
+
+//   .right-control {
+//     display: flex;
+//   }
+
+//   .left-control {
+//     display: flex;
+//     align-items: center;
+//   }
+
+//   .control > .select > #level-select {
+//     padding-left: 2em;
+//     padding-right: 2em;
+//   }
+
+//   .cnn {
+//     width: 100%;
+//     padding: 0;
+//     background: var(--light-gray);
+//     display: flex;
+//   }
+
+//   svg {
+//     margin: 0 auto;
+//     min-height: 490px;
+//     max-height: 700px;
+//     height: calc(100vh - 100px);
+//     width: 100vw;
+//   }
+
+//   .is-very-small {
+//     font-size: 12px;
+//   }
+
+//   #detailed-button {
+//     margin-right: 10px;
+//     color: #dbdbdb;
+//     transition: border-color 300ms ease-in-out, color 200ms ease-in-out;
+//   }
+
+//   #detailed-button.is-activated, #detailed-button.is-activated:hover {
+//     color: #3273dc;
+//     border-color: #3273dc;
+//   }
+
+//   #detailed-button:hover {
+//     color: #b5b5b5;
+//   }
+
+//   #hover-label {
+//     transition: opacity 300ms ease-in-out;
+//     text-overflow: ellipsis;
+//     pointer-events: none;
+//     margin-left: 5px;
+//   }
+
+//   .image-container {
+//     width: 40px;
+//     height: 40px;
+//     border-radius: 4px;
+//     display: inline-block;
+//     position: relative;
+//     border: 2.5px solid #1E1E1E;
+//     margin-right: 10px;
+//     cursor: pointer;
+//     pointer-events: all;
+//     transition: border 300ms ease-in-out;
+//   }
+
+//   .image-container img {
+//     object-fit: cover;
+//     max-width: 100%;
+//     max-height: 100%;
+//     z-index: -1;
+//     transition: opacity 300ms ease-in-out;
+//   }
+
+//   .image-container.inactive {
+//     border: 2.5px solid rgb(220, 220, 220);
+//   }
+
+//   .image-container.inactive > img {
+//     opacity: 0.3;
+//   }
+
+//   .image-container.inactive:hover > img {
+//     opacity: 0.6;
+//   }
+
+//   .image-container.inactive.disabled {
+//     border: 2.5px solid rgb(220, 220, 220);
+//     cursor: not-allowed;
+//   }
+
+//   .image-container.inactive.disabled:hover {
+//     border: 2.5px solid rgb(220, 220, 220);
+//     cursor: not-allowed;
+//   }
+
+//   .image-container.inactive.disabled > img {
+//     opacity: 0.3;
+//     cursor: not-allowed;
+//   }
+
+//   .image-container.inactive.disabled:hover > img {
+//     opacity: 0.3;
+//     cursor: not-allowed;
+//   }
+
+//   .image-container.inactive > .edit-icon {
+//     color: #BABABA;
+//   }
+
+//   .image-container.inactive:hover > .edit-icon {
+//     color: #777777;
+//   }
+
+//   .image-container.inactive:hover {
+//     border: 2.5px solid #1E1E1E;
+//   }
+
+//   .edit-icon {
+//     position: absolute;
+//     bottom: -6px;
+//     right: -7px;
+//     font-size: 7px;
+//     color: #1E1E1E;
+//     transition: color 300ms ease-in-out;
+//   }
+
+//   :global(canvas) {
+//     image-rendering: crisp-edges;
+//   }
+
+//   :global(.layer-label), :global(.layer-detailed-label), :global(.layer-intermediate-label) {
+//     font-size: 12px;
+//     opacity: 0.8;
+//     text-anchor: middle;
+//   }
+
+//   :global(.colorLegend) {
+//     font-size: 10px;
+//   }
+
+//   :global(.legend) {
+//     transition: opacity 400ms ease-in-out;
+//   }
+
+//   :global(.legend > rect) {
+//     opacity: 1;
+//   }
+
+//   :global(.legend text), :global(.legend line), :global(.legend path) {
+//     opacity: 0.7;
+//   }
+
+//   :global(.legend#output-legend > rect) {
+//     opacity: 1;
+//   }
+
+//   :global(.hidden) {
+//     opacity: 0;
+//     pointer-events: none;
+//   }
+
+//   :global(.very-strong) {
+//     stroke-width: 3px;
+//   }
+
+//   :global(.bounding), :global(.edge), :global(.edge-group),
+//   :global(foreignObject), :global(.bounding-flatten),
+//   :global(.underneath-gateway), :global(.input-annotation) {
+//     transition: opacity 300ms ease-in-out;
+//   }
+
+//   :global(rect.bounding) {
+//     transition: stroke-width 800ms ease-in-out, opacity 300ms ease-in-out;
+//   }
+
+//   :global(.annotation-text) {
+//     pointer-events: none;
+//     font-size: 10px;
+//     font-style: italic;
+//     fill: gray;
+//   }
+
+//   /* Change the cursor style on the detailed view input and output matrices */
+//   :global(rect.square) {
+//     cursor: crosshair;
+//   }
+
+//   :global(.animation-control-button) {
+//     font-family: FontAwesome;
+//     opacity: 0.8;
+//     cursor: pointer;
+//   }
