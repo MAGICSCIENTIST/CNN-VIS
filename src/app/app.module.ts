@@ -6,7 +6,12 @@ import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzCardModule } from 'ng-zorro-antd/card';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
 import { NzGridModule } from 'ng-zorro-antd/grid';
-
+import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
+import { NzNotificationModule } from 'ng-zorro-antd/notification';
+import { NzTypographyModule } from 'ng-zorro-antd/typography';
+import { NzDividerModule } from 'ng-zorro-antd/divider';
+import { NzModalModule } from 'ng-zorro-antd/modal';
+import { NzListModule } from 'ng-zorro-antd/list';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -21,6 +26,8 @@ import zh from '@angular/common/locales/zh';
 import { OverviewComponent } from './pages/overview/overview.component';
 import { ColorPanelComponent } from './utils/color-panel/color-panel.component';
 import { LinePanelComponent } from './utils/line-panel/line-panel.component';
+import { DetailPanelComponent } from './utils/detail-panel/detail-panel.component';
+import { LinkTitlePipe } from './utils/pipes/link-title.pipe';
 
 registerLocaleData(zh);
 
@@ -30,7 +37,9 @@ registerLocaleData(zh);
     OverviewComponent,
     ColorPanelComponent,
     NodeTitlePipe,
-    LinePanelComponent
+    LinePanelComponent,
+    DetailPanelComponent,
+    LinkTitlePipe
   ],
   imports: [
     BrowserModule,
@@ -41,6 +50,12 @@ registerLocaleData(zh);
     FormsModule,
     NzCardModule,
     NzGridModule,
+    NzModalModule,
+    NzListModule,
+    NzDividerModule,
+    NzTypographyModule,
+    NzNotificationModule,
+    NzToolTipModule,
     HttpClientModule,
     BrowserAnimationsModule
   ],

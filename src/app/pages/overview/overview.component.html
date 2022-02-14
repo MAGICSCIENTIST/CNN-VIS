@@ -1,9 +1,12 @@
-<p>overview works!</p>
-<div class="overview" id="overview-svg" #overview>        
+
+<!-- <app-detail-panel *ngIf="cnn" [data]="cnn[5][0].inputLinks[0]" [layerColorScales]="layerColorScales"></app-detail-panel> -->
+
+<div class="overview" id="overview-svg" #overview>
     <div class="cnn">
         <!-- layergroup -->
-        <div nz-row *ngFor="let layer of cnn; let i = index" class="layergroup"> 
-            <canvas #background class="background-line" *ngIf="i>0" [attr.from]=i-1 [attr.to]=i [width]=width [height]=getLineHeight(layer) [attr.layertype]=layer[0].type>
+        <div nz-row *ngFor="let layer of cnn; let i = index" class="layergroup">
+            <canvas #background class="background-line" *ngIf="i>0" [attr.from]=i-1 [attr.to]=i [width]=width
+                [height]=getLineHeight(layer) [attr.layertype]=layer[0].type>
 
             </canvas>
             <div nz-col nzSpan="24">
@@ -12,17 +15,95 @@
             <div nz-col nzSpan="24">
                 <div nz-row nzJustify="space-between">
                     <!-- node -->
-                    <div nz-col *ngFor="let node of layer; let j = index" class="node" #node [attr.layer]="i" [attr.layerName]=node.layerName [attr.node]="j"> 
+                    <div nz-col *ngFor="let node of layer; let j = index" class="node" #node [attr.layer]="i"
+                        [attr.layerName]=node.layerName [attr.node]="j" (click)="onNodeMouseClickHandler(node)">
                         <nz-card [nzTitle]="j | nodeTitle:node">
-                            <app-color-panel [data]=node [layerColorScales]=layerColorScales [height]=nodeSize [width]=nodeSize [isScale]=isScale></app-color-panel>                    
+                            <app-color-panel [data]=node [layerColorScales]=layerColorScales [height]=nodeSize
+                                [width]=nodeSize [isScale]=isScale></app-color-panel>
                         </nz-card>
                     </div>
                 </div>
             </div>
-            
+
         </div>
     </div>
-  
+
+    <!-- detail面板 -->
+    <nz-modal [(nzVisible)]="isDetailVisible" [nzTitle]="detailLink | linkTitle" nzWidth="900" (nzOnCancel)="closeDetailView()" (nzOnOk)="closeDetailView()">
+        <ng-container *nzModalContent>
+          <app-detail-panel [data]="detailLink" [layerColorScales]="layerColorScales"></app-detail-panel>
+        </ng-container>
+      </nz-modal>
+    <!-- 普通详情 -->
+    <ng-template #detailTemplate let-links="data">
+        <nz-list class="link-list">
+            <nz-list-item *ngFor="let link of links;let i = index">
+              <ng-container>                
+                <span>{{link | linkTitle}}</span>>                
+                <ul nz-list-item-actions>
+                  <nz-list-item-action><a (click)="showDetailView(link)">详情</a></nz-list-item-action>
+                  <!-- <nz-list-item-action><a (click)="edit(link)">more</a></nz-list-item-action> -->
+                </ul>
+              </ng-container>              
+            </nz-list-item>            
+          </nz-list>        
+    </ng-template>
+
+    <!-- output详情 -->
+    <ng-template #titleTemplate let-output="data">
+        <div nz-row nzGutter="8"  class="detail-output">
+            <!-- 正确率计算 -->
+            <!-- title -->
+            <div nz-col nzSpan="24">
+                
+                <span>Score of {{ output.outputName}} is </span>
+                <span nz-typography nzType="success">
+                    {{output.output | number:'1.4'}}
+                </span>
+                <span>=</span>
+            </div>            
+            <!-- 分母 -->
+            <div nz-col nzSpan="24" class="text-center">
+                <span>e<sup nz-typography nzType="success" class="hotarea">{{output.logit}}</sup></span>
+            </div>
+            <div nz-col nzSpan="24">
+                <nz-divider class="number-divide"></nz-divider>                
+            </div>
+            <!-- 分子 -->
+            <div nz-col nzSpan="6" *ngFor="let outputItem of outputObjList; let i = index">
+                <span *ngIf="outputItem.logit>0">e<sup  nz-typography nzType="success" class="hotarea">{{outputItem.logit | number:'1.4'}}</sup></span>
+                <span *ngIf="outputItem.logit<=0">e<sup  nz-typography nzType="danger" class="hotarea">{{outputItem.logit | number:'1.4'}}</sup></span>
+                <span *ngIf="i < outputObjList.length-1">+</span>
+            </div>
+
+            <div nz-col nzSpan="24">
+                <nz-divider></nz-divider>
+            </div>
+
+
+            <!-- logit计算 -->
+             <!-- title -->
+            <div nz-col nzSpan="24">                
+                <span>logit of {{ output.outputName}} is </span>
+                <span nz-typography nzType="success" class="hotarea">
+                    {{output.logit | number:'1.4'}}
+                </span>
+                <span>= ∑(pix * weight) + bias =</span>
+            </div>      
+             <!-- 分子 -->
+             <div nz-col nzSpan="6" *ngFor="let outputItem of output.mapList; let i = index"  >
+                <span *ngIf="outputItem.sum>0" nz-typography nzType="success" class="hotarea">{{outputItem.sum | number:'1.4'}}</span>
+                <span *ngIf="outputItem.sum<=0" nz-typography nzType="danger" class="hotarea">{{outputItem.sum | number:'1.4'}}</span>
+                <span>+</span>                
+            </div> 
+            <div nz-col nzSpan="12">
+                <span>bias(<span nz-typography  nzType="success">{{output.bias  | number:'1.4'}}</span>)</span>
+            </div>
+        </div>
+        
+
+    </ng-template>
+
 
     <!-- <div class="cnn">
         <svg id="cnn-svg"></svg>

@@ -1,13 +1,46 @@
-.layergroup{
-    // margin-bottom: 32px;    
+.overview{
+    background: white;
+    padding: 16px;
+    margin: 0;
+    // position: absolute;
+    margin-left: -24px;
+
+    .layergroup{
+    
+        // margin-bottom: 32px;    
+    }
+    .background-line{    
+        // &[layertype="pool"],&[layertype="relu"]{
+        //     height: 80px;
+        // }
+        // background-color: black;
+        // width: 100%;
+        // height: 200px;
+    }
+    
+    .node{
+        transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+        &:hover{ box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);}
+    }
+
+    
+
+
 }
-.background-line{    
-    // &[layertype="pool"],&[layertype="relu"]{
-    //     height: 80px;
-    // }
-    // background-color: black;
-    // width: 100%;
-    // height: 200px;
+
+.detail-output{
+    .text-center{
+        text-align: center;
+    }
+    .number-divide{
+        margin: 4px;
+        border-color: black;
+    }
+
+    .hotarea{
+        cursor: pointer;
+    }
+
 }
 
 

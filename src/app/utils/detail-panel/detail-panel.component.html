@@ -1,0 +1,54 @@
+<div nz-row nzGutter="8">
+    <!-- input -->
+    <div>
+        <span class="canvas-title" *ngIf="this.data" >Size: {{this.data.source.output.length}} X {{this.data.source.output[0]?.length}}</span>
+        <canvas #graphCanvas_input [height]="height" [width]="width" class="canvas"></canvas>
+    </div>    
+    <!-- weight -->
+    <div class="weight_wrapper">
+        <div nz-row nzGutter="8" nzJustify="center" nzAlign="middle" class="container">
+            <div *ngIf="weightType=='pool'">max</div>
+            <!-- conv -->
+            <div nz-row nzGutter="24" *ngFor="let row of values;let i = index" nzJustify="center" nzAlign="middle">
+                <div nz-col *ngFor="let item of row;let j = index">
+                    <!-- value -->
+                    <div class="box" [style.background]="values[i][j].color" [style.color]="values[i][j].fontColor">
+                        <span>{{values[i][j].value | number:'1.4'}}</span>
+                    </div>                    
+                    <!-- weight -->
+                    <div *ngIf="weightType=='relu'">
+                        <spam>MAX(0,{{item.value | number:'1.4'}})</spam>
+                    </div>
+                    <div *ngIf="weightType=='pool'" >
+                        
+                    </div>
+                    <div *ngIf="weightType == 'other'">
+                        <span *ngIf="item.weight>0" nz-typography nzType="success">({{item.weight | number:'1.4'}})</span>
+                        <span *ngIf="item.weight<=0" nz-typography nzType="danger">({{item.weight | number:'1.4'}})</span>
+                        <span *ngIf="j < row.length">+</span>
+                    </div>
+                    
+                </div>
+            </div>
+
+
+            <!-- result -->
+            <div nz-col nzSpan="24" class="results">
+                <div nz-row nzGutter="8" nzJustify="center" nzAlign="middle">
+                    <div class="box" [style.background]="valuse_result.color" [style.color]="valuse_result.fontColor">
+                        <span *ngIf="valuse_result.value>0" nz-typography nzType="success">{{valuse_result.value | number:'1.4'}}</span>
+                        <span *ngIf="valuse_result.value<=0" nz-typography nzType="danger">{{valuse_result.value | number:'1.4'}}</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- output -->
+    <div>
+        <span class="canvas-title" *ngIf="this.data" >Size: {{this.data.dest.output.length}} X {{this.data.dest.output[0]?.length}}</span>
+        <canvas #graphCanvas_output [height]="height" [width]="width" class="canvas"></canvas>
+    </div>
+    
+    <!-- <image [height]="height" [width]="width" [href]=imageSource *ngIf="isScale"></image> -->
+</div>
