@@ -1,9 +1,11 @@
 # Cnnvis
 
 ## What's this
-[A CNN VIS tool . idea from cnn-explainer](https://poloclub.github.io/cnn-explainer/)
+A CNN VIS tool.[idea from cnn-explainer (Author:  Jay Wang, Robert Turko, Omar Shaikh, Haekyu Park, Nilaksh Das, Fred Hohman, Minsuk Kahng, and Polo Chau)](https://poloclub.github.io/cnn-explainer/)
 
-Author: MAGICSCIENTISTGGG
+
+Currently, online demo can be found at [there](http://182.92.155.142:3521/)
+
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.1.
 
